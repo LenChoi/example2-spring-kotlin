@@ -6,8 +6,7 @@ import javax.persistence.*
 
 @Entity
 data class Article(
-    @Id @GeneratedValue
-    var id: Long? = null,
+
     var title:String,
     var headline: String,
     var content: String,
@@ -15,16 +14,20 @@ data class Article(
     @ManyToOne @JoinColumn
     var author: User,
     var slug: String = title.toSlug(),
-    var addedAt: LocalDateTime = LocalDateTime.now())
+    var addedAt: LocalDateTime = LocalDateTime.now(),
+
+    @Id @GeneratedValue
+    var id: Long? = null)
 
 
 
 
 @Entity
 data class User(
-    @Id @GeneratedValue
-    var id: Long? = null,
     var login: String,
     var firstName: String,
     var lastName: String,
-    var description: String? = null)
+    var description: String? = null,
+
+    @Id @GeneratedValue
+    var id: Long? = null)
