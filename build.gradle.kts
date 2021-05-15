@@ -27,6 +27,8 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    compile("com.atlassian.commonmark:commonmark:0.11.0")
+    compile("com.atlassian.commonmark:commonmark-ext-autolink:0.11.0")
 }
 
 tasks.withType<KotlinCompile> {
