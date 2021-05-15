@@ -10,3 +10,31 @@ TestRestTemplate은 클라이언트 입장에서 RestTemplate을 사용하듯이
 ## @TestEntityManager
 - JPA 테스트를 하기위한 대안으로써, 엔티티매니저의 기본적인 메소드를 제공함과 동시에 테스트하기 유용하다. 또한 헬퍼 메소드를 제공하는데 그에 따른 내용은 persist(), flush(), find() 등 이 존재한다.
   https://pasudo123.tistory.com/348
+  
+## mockMvc
+- perform()
+  -요청을 전송하는 역할을 합니다. 결과로 ResultActions 객체를 받으며, ResultActions 객체는 리턴 값을 검증하고 확인할 수 있는 andExcpect() 메소드를 제공해줍니다.
+  
+- get()
+  - HTTP 메소드를 결정할 수 있습니다. ( get(), post(), put(), delete() )
+  - 인자로는 경로를 보내줍니다.
+  
+- andExpcet()
+  - 응답을 검증하는 역할을 합니다.
+  - 상태 코드 ( status() )
+    - 메소드 이름 : 상태코드
+    - isOk() : 200
+    -isNotFound() : 404
+    -isMethodNotAllowed() : 405
+    -isInternalServerError() : 500
+    -is(int status) : status 상태 코드
+  - 뷰 ( view() )
+    - 리턴하는 뷰 이름을 검증합니다.
+    - ex. view().name("blog") : 리턴하는 뷰 이름이 blog인가?
+  - 리다이렉트 ( redirect() )
+    - 리다이렉트 응답을 검증합니다.
+    - ex. redirectUrl("/blog") : '/blog'로 리다이렉트 되었는가?
+  - 모델 정보 ( model() )
+    - 컨트롤러에서 저장한 모델들의 정보 검증
+  - 응답 정보 검증 ( content() )
+    - 응답에 대한 정보를 검증해줍니다.

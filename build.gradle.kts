@@ -29,6 +29,14 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     compile("com.atlassian.commonmark:commonmark:0.11.0")
     compile("com.atlassian.commonmark:commonmark-ext-autolink:0.11.0")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude(module = "junit")
+        exclude(module = "mockito-core")
+    }
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("com.ninja-squad:springmockk:3.0.1")
 }
 
 tasks.withType<KotlinCompile> {
@@ -41,3 +49,4 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
