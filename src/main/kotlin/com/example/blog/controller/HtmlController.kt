@@ -3,6 +3,7 @@ package com.example.blog.controller
 import com.example.blog.Article
 import com.example.blog.ArticleRepository
 import com.example.blog.User
+import com.example.blog.property.BlogProperties
 import com.example.blog.util.format
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
@@ -14,11 +15,12 @@ import org.springframework.web.server.ResponseStatusException
 
 
 @Controller
-class HtmlController(private val repository: ArticleRepository) {
+class HtmlController(private val repository: ArticleRepository, private val properties: BlogProperties) {
 
     @GetMapping("/")
     fun blog(model: Model): String {
-        model["title"] = "Blog"
+        model["title"] = properties.title
+        model["banner"] = properties.banner
         model["articles"] = repository.findAllByOrderByAddedAtDesc().map { it.render() }
         return "blog"
     }

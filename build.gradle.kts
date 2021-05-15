@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 
 plugins {
     id("org.springframework.boot") version "2.4.5"
@@ -7,6 +8,7 @@ plugins {
     kotlin("plugin.spring") version "1.4.32"
     kotlin("plugin.jpa") version "1.4.32"
     id("org.jetbrains.kotlin.plugin.allopen") version "1.5.0"
+    kotlin("kapt") version "1.4.32"
 }
 
 group = "com.example"
@@ -29,6 +31,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     compile("com.atlassian.commonmark:commonmark:0.11.0")
     compile("com.atlassian.commonmark:commonmark-ext-autolink:0.11.0")
+    kapt("org.springframework.boot:spring-boot-configuration-processor")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "junit")
